@@ -16,6 +16,7 @@ function RequesteAPI () {
                 setIsError(false)
                 const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze')
                 const json = await fetching.json()
+                setData(json)
             } catch (error){
                 console.log(error)
                 setIsError(true)
