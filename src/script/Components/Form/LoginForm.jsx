@@ -1,3 +1,16 @@
+// Import 
+    // React 
+    import { useForm } from "react-hook-form";
+    // Yup
+        import { yupResolver } from "@hookform/resolvers/yup";
+        import * as yup from "yup";
+
+        // Type 
+type FormValues = {
+    email:string,
+    Password:string,
+} 
+
 const schema = yup.object({
     email: yup
         .string()
