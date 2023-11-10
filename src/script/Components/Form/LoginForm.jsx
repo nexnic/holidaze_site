@@ -4,12 +4,19 @@
     // Yup
         import { yupResolver } from "@hookform/resolvers/yup";
         import * as yup from "yup";
+//import { useNavigate } from "react-router-dom";
+//import SaveLocal from "../../Storage/SaveLocal";
+//import { useState } from "react";
 
         // Type 
+/*
 type FormValues = {
     email:string,
     Password:string,
 } 
+*/
+
+
 
 const schema = yup.object({
     email: yup
@@ -30,22 +37,38 @@ const schema = yup.object({
 })
 
 function LoginForm () {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm({
+        resolver: yupResolver(schema),
+      });
 
-    const form = useForm<FormValues>({
-        defaultValues: {
-            email: "",
-            Password: "",
-        },
-        resolver: yupResolver(schema)
-    })
-    const {register, handleSubmit, formState} = form
-    const {errors} = formState
-
-    const onSubmit = async (data) => {
-        console.log(data)
+    const OnSumit = async (data) => {
+        const {email, Password:password} = data
+        const user = {email, password}
+        
+        try{
+            const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/auth/login', {
+                method:'POST',
+                headers: {
+                    'Content-type': 'application/json; charset=UFT-8',
+                },
+                body:JSON.stringify(user)
+            })
+            const receiveData = await fetching.json()
+            console.log(receiveData)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            console.log('complet')
+        }
+       
     }
+    
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(OnSumit)}>
             <div className='from-group'>
                 <label htmlFor='email'>Email</label>
                 <input type='email' className='form-control' {...register('email')} />
