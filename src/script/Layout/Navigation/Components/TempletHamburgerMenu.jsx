@@ -4,9 +4,8 @@ import Button from '../../../Components/Reuse/Button'
 import { Link } from "react-router-dom";
 
 
-function TempletHamburgerMenu () {
+function TempletHamburgerMenu ({HandlerLogin}) {
     const UserLogin = IsLogin()
-    
 
     return (
         <>
@@ -22,6 +21,9 @@ function TempletHamburgerMenu () {
                     {
                         UserLogin ? null : <Link to='/registerUser' className='link-unstyled'>Register User</Link>
                     }
+                </li>
+                <li>
+                    <Button ClassOf='link-unstyle' TypeOf='button' OnClick={HandlerLogin}>Login</Button>
                 </li>
             </ul>
         </div>
