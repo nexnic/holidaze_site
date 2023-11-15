@@ -1,5 +1,9 @@
+import { useEffect } from "react"
+
 function SaveLocal({LocalName, LocalData}){
-    localStorage.setItem(LocalName, LocalData)
+    useEffect(() => {
+        localStorage.setItem(LocalName, JSON.stringify(LocalData))
+    })
 }
 
 export default SaveLocal
