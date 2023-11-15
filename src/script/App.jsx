@@ -4,6 +4,7 @@ import '../css/style.css';
 import Layout from "./Layout/Layout";
 import Home from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
+import RegisterPage from "./Pages/Register/RegisterPage";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='/profile/:userID' element={<Profile />}/>
+          <Route path='/register' element={<RegisterPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>
