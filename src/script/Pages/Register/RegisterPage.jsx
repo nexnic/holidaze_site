@@ -1,7 +1,9 @@
+import RegisterForm from "../../Components/Form/RegisterForm"
+
 function RegisterPage (){
     return (
         <main>
-            test Register page
+           <RegisterForm />
         </main>
     )
 }
