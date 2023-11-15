@@ -1,11 +1,15 @@
 // Import 
     // React 
     import { useForm } from "react-hook-form";
+    
     // Yup
         import { yupResolver } from "@hookform/resolvers/yup";
         import * as yup from "yup";
 //import { useNavigate } from "react-router-dom";
-//import SaveLocal from "../../Storage/SaveLocal";
+import useLocalStorage from "../../Storage/useLocalStorage";
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
 
         // Type 
@@ -45,9 +49,15 @@ function LoginForm () {
         resolver: yupResolver(schema),
       });
 
+    const [userData, setUserDate] = useLocalStorage('userData', {})
+    const [userName, setUserName] = useState() 
+    const navigate = useNavigate()
+
     const OnSumit = async (data) => {
         const {email, Password:password} = data
         const user = {email, password}
+        
+        
         
         try{
             const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/auth/login', {
@@ -58,13 +68,15 @@ function LoginForm () {
                 body:JSON.stringify(user)
             })
             const receiveData = await fetching.json()
-            console.log(receiveData)
+            if(fetching.status === 200) {
+                const {name} = receiveData
+                
+                navigate(`profile/${name}`)
+            }
+
         } catch (error) {
             console.log(error)
-        } finally {
-            console.log('complet')
         }
-       
     }
     
     return (
