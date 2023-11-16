@@ -14,7 +14,7 @@ function RequesteAPI () {
             try{
                 setIsLoading(true)
                 setIsError(false)
-                const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze')
+                const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/venues')
                 const json = await fetching.json()
                 setData(json)
             } catch (error){
@@ -26,7 +26,7 @@ function RequesteAPI () {
         }
         Requestedata()
     }, [])
-    return {data, isLoading, isLoading}
+    return {data, isLoading, isError}
 }
 
 export default RequesteAPI
