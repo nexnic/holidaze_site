@@ -45,7 +45,7 @@ function RegisterForm (){
         const user = {name, email, password, avatar}
         console.log(user)
 
-        try {
+        try { 
             const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/auth/register', {
                 method:'POST',
                 headers: {
@@ -55,7 +55,8 @@ function RegisterForm (){
             })
             const receiveData = await fetching.json()
             console.log(fetching)
-            if(fetching.status === 200) {
+            console.log(receiveData)
+            if(fetching.status === 201) {
                 console.log(receiveData)
             }
             if(fetching.status === 400) {
