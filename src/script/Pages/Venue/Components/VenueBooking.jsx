@@ -11,9 +11,8 @@ function VenueBooking ({Bookings}) {
     endDate: format(new Date(obj.dateTo), 'yyyy, MM,  dd'),
   }));
 
-  const date = 
   console.log(reserved)
-
+  
   return (
     <Calendar
       selected={selectedDates}
