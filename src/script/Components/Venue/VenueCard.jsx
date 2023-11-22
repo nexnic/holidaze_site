@@ -15,14 +15,14 @@ function VenueCard({ item }) {
     }
 
    return (
-    <div className="card bg-dark text-white" id={item.id} onClick={() => HandlerVenueCard(id)}>
-        <img src={item.media[0]} alt="" />
+    <div className="card card__venue bg-dark text-white" id={item.id} onClick={() => HandlerVenueCard(id)}>
+        <img src={item.media[0]} alt="" className="card-img"/>
         <div className="position-absolute bottom-0 text-light w-100 p-3" style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
             <h5 className="card-title">{item.name}</h5>
             <div>
             {
                     [...new Array(maxRating)].map((arr , index)=> {
-                        return index < activeRating ? <i className="fa-star fa-solid" style={{color: '#DF4C73'}}></i> : <i className="fa-star fa-solid" style={{color: '#B3B3B3'}}></i>
+                        return index < activeRating ? <i className="fa-star fa-solid" key={index} style={{color: '#DF4C73'}}></i> : <i className="fa-star fa-solid" key={index} style={{color: '#B3B3B3'}}></i>
             })}
             </div>
             
