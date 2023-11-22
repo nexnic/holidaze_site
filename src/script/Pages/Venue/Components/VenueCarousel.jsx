@@ -1,24 +1,16 @@
-function VenueCarousel({media}) {
-
-
-
+function VenueCarousel({Media}) {
+    
     return (
-        <div className="carousel slide">
-            <ol className="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div className="">
+            
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img className="d-block w-100" src='https://source.unsplash.com/random/150x150?person' alt="" />
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block w-100" src="https://source.unsplash.com/random/150x150?person" alt="" />
-                </div>
-                <div className="carousel-item">
-                    <img className="d-block w-100" src="https://source.unsplash.com/random/150x150?person" alt="" />
-                </div>
+                {
+                    Media.map((items) => (
+                        <div className="carousel-item">
+                            <img src={items} className="d-block w-100" alt="..."></img>
+                        </div>
+                    ))
+                }
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>

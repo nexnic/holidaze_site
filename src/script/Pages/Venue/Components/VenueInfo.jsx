@@ -5,12 +5,8 @@ function VenueMainInfo({Title, Location, Updated, Description, Rating, Price}) {
     const maxRating = 5;
     const activeRating = Rating
 
-    const options = {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-    };
-    const dateNow = new Date(Updated).toLocaleDateString('no-NO', options)
+    
+    
     
     return (
         <div className="row">   

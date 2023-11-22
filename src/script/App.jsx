@@ -18,7 +18,7 @@ function App() {
           <Route path='/profile/:userID' element={<Profile />}/>
           <Route path='/register' element={<RegisterPage/>} />
           <Route path='/product' element={<Product />} />
-          <Route path='/venue/:id' element={<Venue />} />
+          <Route path='/venue/:Venueid' element={<Venue />} />
         </Route>
       </Routes>
     </BrowserRouter>
