@@ -35,15 +35,16 @@ function RegisterForm (){
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
       } = useForm({
         resolver: yupResolver(schema),
+        criteriaMode: 'all',
         });
 
     const OnSubmit = async (data) => {
         const {name,email, Password:password,Avatar:avatar} = data
         const user = {name, email, password, avatar}
-        console.log(user)
 
         try { 
             const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/auth/register', {
@@ -54,13 +55,12 @@ function RegisterForm (){
                 body:JSON.stringify(user)
             })
             const receiveData = await fetching.json()
-            console.log(fetching)
-            console.log(receiveData)
             if(fetching.status === 201) {
                 console.log(receiveData)
             }
             if(fetching.status === 400) {
-                console.log(receiveData.status)
+               const {message:msg} = receiveData.errors[0]
+               setError('apiError', { message: msg });
             }
         } catch (error) {
             console.log(error)
@@ -68,28 +68,29 @@ function RegisterForm (){
     }
 
     return (
-        <form onSubmit={handleSubmit(OnSubmit)}>
-            <div className='form-control'>
-                <label htmlFor='name'>Name</label>
-                <input type='name' id='name' {...register('name')} />
+        <form onSubmit={handleSubmit(OnSubmit)} className="text-white">
+            <div className='mb-3'>
+                <label htmlFor='name' className="form-label">Name</label>
+                <input type='name' id='name' className="form-control" {...register('name')} />
                 <p className='error'>{errors.name?.message}</p>
             </div>
-            <div className='form-control'>
-                <label htmlFor='email'>Email</label>
-                <input type='email' id='email' {...register('email')}/>
+            <div className='mb-3'>
+                <label htmlFor='email' className="form-label">Email</label>
+                <input type='email' id='email' className="form-control" {...register('email')}/>
                 <p className='error'>{errors.email?.message}</p>
             </div>
-            <div className='form-control'>
-                <label htmlFor='Password'>Password</label>
-                <input type='password' id='Password' {...register('Password')}/>
+            <div className='mb-3'>
+                <label htmlFor='Password' className="form-label">Password</label>
+                <input type='password' className="form-control" id='Password' {...register('Password')}/>
                 <p className='error'>{errors.Password?.message}</p>
             </div>
-            <div className='form-control'>
-                <label htmlFor='Avatar'>Avatar</label>
-                <input type='url' id='Avatar' {...register('Avatar')} />
+            <div className='mb-3'>
+                <label htmlFor='Avatar' className="form-label">Avatar</label>
+                <input type='url' id='Avatar'className="form-control" {...register('Avatar')} />
                 <p className='error'>{errors.Avatar?.message}</p>
             </div>
-            <button>Submit</button>
+            <p className="text-warning">{errors.apiError?.message}</p>
+            <button className="btn btn-primary">Submit</button>
         </form>
     )
 }

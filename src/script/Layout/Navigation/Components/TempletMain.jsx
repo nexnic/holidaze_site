@@ -8,7 +8,7 @@
 function TempletMain ({ children }) {
     
     return (
-        <nav className="navbar navbar-expand-lg bg-black pl-3 pr-3">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-black pl-3 pr-3 fixed-top">
             <div className="container-fluid">   
                 {children}
             </div>

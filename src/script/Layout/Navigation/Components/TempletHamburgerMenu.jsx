@@ -15,12 +15,15 @@ function TempletHamburgerMenu ({HandlerLogin}) {
         <div className='collapse navbar-collapse' id='navBarMenu'>
             <ul className='nav-bar mr-auto'>
                 <li className='nav-item'>
-                    <Link to='/' className='link-unstyled'>Home</Link>
+                    <Link to='/' className='link-unstyled text-white'>Home</Link>
                 </li>
                 <li className='nav-item'>
                     {
-                        UserLogin ? null : <Link to='/register' className='link-unstyled'>Register User</Link>
+                        UserLogin ? null : <Link to='/register' className='link-unstyled text-white'>Register User</Link>
                     }
+                </li>
+                <li>
+                    <Link to='/product' className='link-unstyled text-white'>Rent</Link>
                 </li>
                 <li>
                     <Button ClassOf='link-unstyle' TypeOf='button' OnClick={HandlerLogin}>Login</Button>
