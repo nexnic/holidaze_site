@@ -17,7 +17,7 @@ function Header () {
     if(isError) return <ErrorMSG />
     else {
         return (
-            <header className='container ' style={{backgroundImage: `URL(${imageBG})`, backgroundPosition:'bottom', backgroundSize:'cover', height:'250px'}}>
+            <header className='container ' style={{backgroundImage: `URL(${imageBG})`, backgroundPosition:'bottom', backgroundSize:'cover', height:'250px', marginTop:'80px'}}>
                 <div className='row'>
                     <form className='col-md-6 py-2'>
                         <div className='input-group'>
