@@ -6,4 +6,10 @@
         min-height: 521px;
         max-height: 521px;
     }
+
+    .card-img {
+        height: 521px;
+        width: 100%;
+        object-fit: cover;
+    }
 }
