@@ -4,8 +4,10 @@
         @import './abstracts/variables';
 
 // Components 
-    // button
+    // Button
         @import './Components/button';
+    // Card
+        @import './Components/card'; 
 
 // Import Bootstrap 
 @import "../../node_modules/bootstrap/scss/bootstrap";
