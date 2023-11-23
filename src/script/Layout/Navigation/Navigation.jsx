@@ -9,10 +9,18 @@ import LoginForm from "../../Components/Form/LoginForm";
 
 function Navigation () {
     const [loginMenu, setLoginMenu] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false)
     const UserLogin = IsLogin()
 
+    function HandlerMenu() {
+        setMenuOpen(menuOpen => !menuOpen)
+    }
+
+
     function HandlerLoginMenu () {
+        setMenuOpen(menuOpen => !menuOpen)
         setLoginMenu(loginMenu => !loginMenu)
+
     }
         
     
@@ -22,7 +30,7 @@ function Navigation () {
         <TempletMain>
             <TempletbrandName />
             {UserLogin ? <TempletProfileMenu/> : null }
-            <TempletHamburgerMenu HandlerLogin={HandlerLoginMenu}/>
+            <TempletHamburgerMenu HandlerLogin={HandlerLoginMenu} MenuOpen={menuOpen} HandlerMenu={HandlerMenu}/>
             {loginMenu ? <LoginForm/> : null }
         </TempletMain>
     )
