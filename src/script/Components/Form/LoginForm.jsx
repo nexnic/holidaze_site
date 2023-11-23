@@ -8,7 +8,6 @@
 //import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../../Storage/useLocalStorage";
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
 
@@ -44,13 +43,14 @@ function LoginForm () {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
       } = useForm({
         resolver: yupResolver(schema),
+        criteriaMode: 'all',
       });
 
     const [userData, setUserDate] = useLocalStorage('userData', {})
-    const [userName, setUserName] = useState() 
     const navigate = useNavigate()
 
     const OnSumit = async (data) => {
@@ -70,13 +70,13 @@ function LoginForm () {
             const receiveData = await fetching.json()
                 
             if(fetching.status === 200) {
-                //const {name} = receiveData
-                console.log(receiveData)
-                //navigate(`profile/${name}`)
+                const {name} = receiveData
+                setUserDate(receiveData)
+                navigate(`profile/${name}`)
             }
             if(fetching.status > 400 && fetching.status < 499){
-                console.log('test')
-                console.log(receiveData)
+                const {message:msg} = receiveData.errors[0]
+                setError('apiError', {message: msg})
             }
 
         } catch (error) {
@@ -85,6 +85,7 @@ function LoginForm () {
     }
     
     return (
+    <div className="d-block position-absolute  top-100 bg-black px-4 py-3 mt-2" style={{zIndex: 300, color: 'white'}}>
         <form onSubmit={handleSubmit(OnSumit)}>
             <div className='from-group'>
                 <label htmlFor='email'>Email</label>
@@ -96,6 +97,7 @@ function LoginForm () {
                 <input type='password' className='form-control' {...register('Password')}/>
                 <p style={{color: 'white'}}>{errors.Password?.message}</p>
             </div>
+            <div className="dropdown-divider"></div>
             <div className='form-group'>
                 <div className='form-check'>
                     <input type='checkbox' className='form-check-input' />
@@ -104,8 +106,10 @@ function LoginForm () {
                     </label>
                 </div>
             </div>
-            <button>Login</button>
+            <p className="text-warning">{errors.apiError?.message}</p>
+            <button className="btn btn-primary">Login</button>
         </form>
+        </div>
     )
 }
 
