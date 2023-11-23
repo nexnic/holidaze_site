@@ -9,8 +9,11 @@ function TempletProfileMenu () {
     function HandlerProfileButton () {
         navigate(`/profile/${name}`)
     }
+    
     function HandlerLogoutButton () {
-        console.log()
+        navigate('/')
+        window.localStorage.clear();
+        window.location.reload();
     }
 
     return (
