@@ -4,15 +4,15 @@ import Button from '../../../Components/Reuse/Button'
 import { Link } from "react-router-dom";
 
 
-function TempletHamburgerMenu ({HandlerLogin}) {
+function TempletHamburgerMenu ({HandlerLogin, MenuOpen, HandlerMenu}) {
     const UserLogin = IsLogin()
 
     return (
         <>
-        <Button ClassOf={'navbar-toggler'} TypeOf={'button'}  DBToggel={'collapse'} DBTarget={'#navBarMenu'} AControls={'navBarMenu'} AExpanded={'false'} ALabel={'Toggle navigation'}>
+        <Button ClassOf={'navbar-toggler'} TypeOf={'button'}  DBToggel={'collapse'} DBTarget={'#navBarMenu'} AControls={'navBarMenu'} AExpanded={'false'} ALabel={'Toggle navigation'} OnClick={HandlerMenu}>
             <span className="navbar-toggler-icon"></span>
         </Button>
-        <div className='collapse navbar-collapse' id='navBarMenu'>
+        <div className={ `${MenuOpen ? '' :'collapse'} navbar-collapse`} id='navBarMenu'>
             <ul className='nav-bar mr-auto'>
                 <li className='nav-item'>
                     <Link to='/' className='link-unstyled text-white'>Home</Link>

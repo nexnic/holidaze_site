@@ -1,11 +1,16 @@
+import { useNavigate } from "react-router-dom"
 import Button from "../../../Components/Reuse/Button"
 
 function TempletProfileMenu () {
+    const UserDetails = JSON.parse(localStorage.getItem('userData'))
+    const navigate = useNavigate()
+    const {name} = UserDetails
+
     function HandlerProfileButton () {
-        console.log('click')
+        navigate(`/profile/${name}`)
     }
     function HandlerLogoutButton () {
-
+        console.log()
     }
 
     return (
