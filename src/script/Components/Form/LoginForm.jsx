@@ -68,10 +68,15 @@ function LoginForm () {
                 body:JSON.stringify(user)
             })
             const receiveData = await fetching.json()
-            if(fetching.status === 200) {
-                const {name} = receiveData
                 
-                navigate(`profile/${name}`)
+            if(fetching.status === 200) {
+                //const {name} = receiveData
+                console.log(receiveData)
+                //navigate(`profile/${name}`)
+            }
+            if(fetching.status > 400 && fetching.status < 499){
+                console.log('test')
+                console.log(receiveData)
             }
 
         } catch (error) {
