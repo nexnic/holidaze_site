@@ -9,8 +9,11 @@ function TempletProfileMenu () {
     function HandlerProfileButton () {
         navigate(`/profile/${name}`)
     }
+    
     function HandlerLogoutButton () {
-        console.log()
+        navigate('/')
+        window.localStorage.clear();
+        window.location.reload();
     }
 
     return (
@@ -18,7 +21,7 @@ function TempletProfileMenu () {
             <div className='rounded-circle' role="button" id='ProfileDropdown' data-bs-toggle='dropdown' aria-expanded='false'>
                 <img src="" alt="" className='rounded-circle' style={{width: '20px', height:'20px'}}/>
             </div>
-            <ul className='dropdown-menu' aria-labelledby='ProfileDropdown'>
+            <ul className='dropdown-menu dropdown-menu-dark' aria-labelledby='ProfileDropdown'>
                 <li>
                     <Button TypeOf={'button'} ClassOf={'dropdown-item'} OnClick={HandlerProfileButton}>Profile</Button>
                 </li>
