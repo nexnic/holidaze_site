@@ -13,8 +13,6 @@ function Product (){
     else {
        return (
         <main>
-            <section>
-            </section>
             <section className='d-flex p-2 flex-column align-items-center gap-3'>
                 {
                     data.map((items) => <VenueCard item={items} key={items.id} />)
