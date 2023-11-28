@@ -17,7 +17,6 @@ function Venue () {
     const {media, updated, name, rating, description, price, bookings} = data
     const [selectImage, setSelectImage] = useState(0);
     const dateNow = new Date(updated).toLocaleDateString('no-NO', options)
-
     const maxRating = 5;
     const activeRating = rating
 
@@ -51,7 +50,7 @@ function Venue () {
                             <span className="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div className='row'>
+                    <div className='row text-white'>
                             <small>Last update {dateNow}</small>
                             <h2>{name}</h2>
                             <div className="">
