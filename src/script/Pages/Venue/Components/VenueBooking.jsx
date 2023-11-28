@@ -18,20 +18,6 @@ function VenueBooking ({Bookings}) {
     setEndDate(end);
   };
 
- 
-  console.log(Bookings)
-  
-  const events = [
-    {
-        "start": "2023-12-07T15:30:00+05:00",
-        "end": "2023-12-10T16:30:00+05:00"
-    },
-    {
-        "start": "2023-12-11T16:00:00+05:00",
-        "end": "2023-12-12T20:00:00+05:00"
-    }
-];
-
   const disabledDateRanges = date?.map(range => ({
     start: new Date(range.dateFrom),
     end: new Date(range.dateTo)
