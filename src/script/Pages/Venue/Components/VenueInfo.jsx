@@ -9,9 +9,9 @@ function VenueMainInfo({Title, Location, Updated, Description, Rating, Price}) {
     
     
     return (
-        <div className="row">   
-            <small>{dateNow}</small>
-            <h2>{Title}</h2>
+        <div className="row" >   
+            <small className="text-white">{dateNow}</small>
+            <h2 className="text-white">{Title}</h2>
             <small>{Country} / {City}</small>
             <div className="">
             {

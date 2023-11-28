@@ -1,32 +1,66 @@
-import Calendar from "@demark-pro/react-booking-calendar";
-import { useState } from "react";
-import { compareAsc, format } from 'date-fns'
+
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
+import { useState } from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { addMonths } from 'date-fns';
 
 
 function VenueBooking ({Bookings}) {
-  const [selectedDates, setSelectedDates] = useState([]);
-  const handleChange = (e) => setSelectedDates(e);
-  let reserved = Bookings?.map((obj) => ({
-    startDate: format(new Date(obj.dateFrom), 'yyyy, MM,  dd'),
-    endDate: format(new Date(obj.dateTo), 'yyyy, MM,  dd'),
+  const date = Bookings
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+ 
+  console.log(Bookings)
+  
+  const events = [
+    {
+        "start": "2023-12-07T15:30:00+05:00",
+        "end": "2023-12-10T16:30:00+05:00"
+    },
+    {
+        "start": "2023-12-11T16:00:00+05:00",
+        "end": "2023-12-12T20:00:00+05:00"
+    }
+];
+
+  const disabledDateRanges = date?.map(range => ({
+    start: new Date(range.dateFrom),
+    end: new Date(range.dateTo)
   }));
 
-  console.log(reserved)
   
-  return (
-    <Calendar
-      selected={selectedDates}
-      onChange={handleChange}
-      onOverbook={(e, err) => alert(err)}
-      components={{
-        
-      }}
-      disabled={(date, state) => !state.isSameMonth}
-      variant="events"
-      dateFnsOptions={{ weekStartsOn: 1 }}
-      range={true}
+
+
+  
+    return (
+      <div className="d-flex justify-content-center">
+ 
+    <DatePicker
+      showIcon
+      minDate={new Date()}
+      maxDate={addMonths(new Date(), 5)}
+      selected={startDate}
+      onChange={onChange}
+      startDate={startDate}
+      endDate={endDate}
+      inline
+      excludeDateIntervals={disabledDateRanges}
+      showDisabledMonthNavigation
     />
-  )
+
+        <button className="btn btn-primary">Rent</button>
+      </div>
+    )
+  
 }
 
 export default VenueBooking

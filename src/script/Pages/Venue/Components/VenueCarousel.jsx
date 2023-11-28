@@ -6,6 +6,7 @@ function VenueCarousel({Media}) {
             <div className="carousel-inner">
                 {
                     Media.map((items) => (
+                        // eslint-disable-next-line react/jsx-key
                         <div className="carousel-item">
                             <img src={items} className="d-block w-100" alt="..."></img>
                         </div>
