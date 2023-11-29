@@ -2,8 +2,11 @@ import { useParams } from "react-router-dom"
 import Request from "../../Components/API/Request"
 import LoadingScreen from "../../Components/Loading/LoadingScreen"
 import ErrorMSG from "../../Components/Error/ErrorMSG"
-import { useState } from "react"
+import { Children, useState } from "react"
 import VenueBooking from "./Components/VenueBooking"
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Modaltest from "./Components/VenueTest"
 
 const options = {
     year: "numeric",
@@ -14,18 +17,22 @@ const options = {
 function Venue () {
     const {Venueid} = useParams()
     const {data, isLoading, isError} = Request('venues' , Venueid, '_bookings=true')
-    const {media, updated, name, rating, description, price, bookings} = data
+    const {media, id,  updated, name, rating, description, price, bookings, maxGuests} = data
     const [selectImage, setSelectImage] = useState(0);
+    const [modalShow, setModalShow] = useState(false);
     const dateNow = new Date(updated).toLocaleDateString('no-NO', options)
     const maxRating = 5;
     const activeRating = rating
+
+    const handleClose = () => setModalShow(false) ;
+
 
     if(isLoading) return <LoadingScreen />
     if(isError) return <ErrorMSG />
     else {
         return (
             <main>
-                <div className='container'>
+                <div className='container mb-3'>
                     <div className='carousel slide'>
                         <ol className="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -66,9 +73,18 @@ function Venue () {
                             <div>
                                 <small>Per Day</small>
                                 <h3>{price} kr</h3>
+                                <Button variant="primary" onClick={() => setModalShow(true)}>
+                                    Rent
+                                </Button>
+
+                                <Modaltest
+                                    IsActive={modalShow}
+                                    Title='Booking'
+                                >
+                                    <VenueBooking  Bookings={bookings} VenueID={id} MaxGuest={maxGuests} Price={price} handleClose={()=> handleClose()}/>
+                                </Modaltest>
                             </div>
                     </div>
-                    <VenueBooking  Bookings={bookings}/>
                 </div>
             </main>
         )
