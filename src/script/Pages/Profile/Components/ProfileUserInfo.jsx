@@ -1,9 +1,11 @@
 function ProfileUserInfo ({userName, userEmail}) {
 
     return (
-        <div className="text-center">
-            <h2>kent Erik</h2>
-            <h5>kent.erik.hole@outlook.com</h5>
+        <div className='container'>
+            <div className="text-center p-3">
+                <h2 style={{color: 'white'}}>{userName}</h2>
+                <h4 style={{color: 'white'}}>{userEmail}</h4>
+            </div>
         </div>
     )
 }
