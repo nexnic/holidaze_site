@@ -41,7 +41,7 @@ function ChangeAvatarForm () {
             })
             const receiveData = await fetching.json()
             if(fetching.status === 200) {
-                localStorage.setItem('userDate', receiveData)
+                localStorage.setItem('userData', JSON.stringify(receiveData))
                 window.location.reload()
             }
             if(fetching.status > 400 && fetching.status < 499){
