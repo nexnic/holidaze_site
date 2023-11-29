@@ -7,6 +7,7 @@ import VenueBooking from "./Components/VenueBooking"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Modaltest from "./Components/VenueTest"
+import ModelBox from "../../Components/Reuse/ModelBox"
 
 const options = {
     year: "numeric",
@@ -24,7 +25,7 @@ function Venue () {
     const maxRating = 5;
     const activeRating = rating
 
-    const handleClose = () => setModalShow(false) ;
+    const handleClose = () => setModalShow(false);
 
 
     if(isLoading) return <LoadingScreen />
@@ -77,12 +78,13 @@ function Venue () {
                                     Rent
                                 </Button>
 
-                                <Modaltest
+                                <ModelBox
                                     IsActive={modalShow}
                                     Title='Booking'
+                                    Onhide={handleClose}
                                 >
                                     <VenueBooking  Bookings={bookings} VenueID={id} MaxGuest={maxGuests} Price={price} handleClose={()=> handleClose()}/>
-                                </Modaltest>
+                                </ModelBox>
                             </div>
                     </div>
                 </div>

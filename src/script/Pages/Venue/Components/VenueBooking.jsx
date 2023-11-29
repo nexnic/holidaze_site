@@ -3,9 +3,6 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import { useForm } from "react-hook-form";
- // Yup
- import { yupResolver } from "@hookform/resolvers/yup";
- import * as yup from "yup";
 
 import { useState } from 'react';
 import DatePicker from "react-datepicker";
@@ -27,7 +24,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
   const [endDate, setEndDate] = useState(null);
   const [orderComplett, setOrderComplett] =  useState(true)
 
-  
+
   const generateOptions = () => {
     const options = [];
     for (let i = 1; i <= maxGuests; i++) {
