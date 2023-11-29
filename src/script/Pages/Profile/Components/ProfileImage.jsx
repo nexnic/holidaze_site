@@ -5,12 +5,12 @@ function ProfileImage ({avatar, userName}) {
     const [showInput, setShowInput] = useState(false)
 
     const handleMenu = () => setShowInput(!showInput)
-
+    const ProfileImage = avatar ? avatar : 'https://source.unsplash.com/random/150x150?person'
     return (
         <div>
             <div className="d-flex justify-content-center mb-4">
-                <img id="selectedAvatar" src="https://source.unsplash.com/random/150x150?person"
-                className="rounded-circle" style={{width: '200px', height: '200px', }} alt="example placeholder"/>
+                <img id="selectedAvatar" src={ProfileImage}
+                className="rounded-circle" style={{width: '200px', height: '200px', }} alt={`See image of ${userName}` }/>
             </div>
             {showInput ? <ChangeAvatarForm /> : null}
             <div className="d-flex justify-content-center">
