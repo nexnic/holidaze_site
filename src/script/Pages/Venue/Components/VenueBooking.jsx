@@ -21,13 +21,13 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
   const date = Bookings
   const {accessToken} = GetLocal('userData')
 
-  const [totalPrice, setTotalPrice] = useState(null)
   const [totalDays, setTotalDays] = useState(null)
   const [selectedGuests, setSelectedGuests] = useState(1);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [orderComplett, setOrderComplett] =  useState(true)
-  console.log(orderComplett)
+
+  
   const generateOptions = () => {
     const options = [];
     for (let i = 1; i <= maxGuests; i++) {
@@ -69,7 +69,6 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
         })
         const receiveData = await fetching.json()
         if(fetching.status === 200) {
-          console.log('test complett')
           setOrderComplett(true)
         }
         if(fetching.status > 400 && fetching.status < 499){
