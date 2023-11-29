@@ -12,9 +12,10 @@ function Profile (){
     const {data, isLoading, isError} = RequestAPIAuth(userID, accessToken)
     if(isLoading) return<div>loading</div>
     if(isError) return <div>Error</div>
+    
     else {
         return (
-            <main>
+            <main className='p-3'>
                 <ProfileImage avatar={avatar} userName={name}/>
                 <ProfileUserInfo userName={name} userEmail={email}/>
             </main>
