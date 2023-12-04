@@ -24,7 +24,7 @@ function TempletHamburgerMenu ({HandlerLogin, MenuOpen, HandlerMenu}) {
                 </li>
                 <li className='nav-item'>
                     {
-                        UserLogin ? <Link to='/registerVenue' className='link-unstyled text-white'>Register As Venue</Link> : null
+                        UserLogin ? <Link to='/register/venue' className='link-unstyled text-white'>Register As Venue</Link> : null
                     }
                 </li>
                 <li>

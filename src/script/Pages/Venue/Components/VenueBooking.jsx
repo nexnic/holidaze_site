@@ -22,7 +22,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
   const [selectedGuests, setSelectedGuests] = useState(1);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [orderComplett, setOrderComplett] =  useState(true)
+  const [orderComplett, setOrderComplett] =  useState(false)
 
 
   const generateOptions = () => {
@@ -136,7 +136,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
               <div className='col'>
                 <p style={{color: 'white' }}><i className="fa-solid fa-users"></i> Guest</p>
                 <select className="form-select form-select-sm" value={selectedGuests} onChange={handleSelectChange } style={{backgroundColor: 'white'}}>
-                {generateOptions()}
+                  {generateOptions()}
                 </select>
               </div>
               <div className='col'>
