@@ -8,6 +8,7 @@ import ContryList from "../../Storage/ContryList";
 import ContinentsList from '../../Storage/Continents';
 import { useState } from "react";
 import GetLocal from "../../Storage/GetLocal";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
     name: yup
@@ -70,6 +71,8 @@ function RegisterVenueForm () {
         criteriaMode: 'all',
     });
 
+    const navigate = useNavigate()
+
     const [urlImage, setUrlImage] = useState([])
     const [selectedContry, setSelectedContry] = useState('Contry');
     const ListOfContry = ContryList
@@ -114,7 +117,10 @@ function RegisterVenueForm () {
                 body:JSON.stringify(obj)
             })
             const receiveData = await fetching.json()
-            console.log(receiveData)
+            if(fetching.status === 200){
+                navigate(`/venue/${receiveData.id}`)
+            }
+            console.log(receiveData.status)
         } catch (error) {
             console.log(error)
         }

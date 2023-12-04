@@ -13,7 +13,7 @@ function TempletProfileMenu () {
     }
 
     function HandlerManagerButton () {
-        navigate('/')
+        navigate('/dashboard')
     }
     
     function HandlerLogoutButton () {
