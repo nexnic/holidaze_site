@@ -1,6 +1,6 @@
 // Import 
     // React 
-    import { useForm, Controller } from "react-hook-form";
+    import { useForm} from "react-hook-form";
     // Yup
         import { yupResolver } from "@hookform/resolvers/yup";
         import * as yup from "yup";
@@ -16,7 +16,6 @@ const schema = yup.object({
 function RegisterVenueManger () {
     const {accessToken,name} = GetLocal('userData')
     const {
-        control, 
         register,
         handleSubmit,
         setError,
