@@ -4,11 +4,16 @@ import Button from "../../../Components/Reuse/Button"
 function TempletProfileMenu () {
     const UserDetails = JSON.parse(localStorage.getItem('userData'))
     const navigate = useNavigate()
-    const {name, avatar} = UserDetails
+    const {name, avatar, venueManager} = UserDetails
+    console.log(venueManager)
     const ProfileImage = avatar ? avatar : 'https://source.unsplash.com/random/150x150?person'
 
     function HandlerProfileButton () {
         navigate(`/profile/${name}`)
+    }
+
+    function HandlerManagerButton () {
+        navigate('/')
     }
     
     function HandlerLogoutButton () {
@@ -26,6 +31,9 @@ function TempletProfileMenu () {
                 <li>
                     <Button TypeOf={'button'} ClassOf={'dropdown-item'} OnClick={HandlerProfileButton}>Profile</Button>
                 </li>
+                {
+                    venueManager ? <li><Button TypeOf={'button'} ClassOf={'dropdown-item'} OnClick={HandlerManagerButton}>Dashboard</Button></li> : 'test'
+                }
                 <li>
                     <Button TypeOf={'button'} ClassOf={'dropdown-item'} OnClick={()=> HandlerLogoutButton()}>Logout</Button>
                 </li>
