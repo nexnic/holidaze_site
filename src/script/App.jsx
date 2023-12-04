@@ -8,6 +8,8 @@ import RegisterPage from "./Pages/Register/RegisterPage";
 import Product from "./Pages/Product/Product";
 import Venue from "./Pages/Venue/Venue";
 import RegisterVenue from "./Pages/RegisterVenue/RegisterVenue";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import RegisterNewVenue from "./Pages/RegisterNewVenue/RegisterNewVenue";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
           <Route path='/register/venue' element={<RegisterVenue />} />
           <Route path='/product' element={<Product />} />
           <Route path='/venue/:Venueid' element={<Venue />} />
+          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/dashboard/register/venue' element={<RegisterNewVenue/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
