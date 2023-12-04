@@ -7,6 +7,7 @@ import Profile from "./Pages/Profile/Profile";
 import RegisterPage from "./Pages/Register/RegisterPage";
 import Product from "./Pages/Product/Product";
 import Venue from "./Pages/Venue/Venue";
+import RegisterVenue from "./Pages/RegisterVenue/RegisterVenue";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/profile/:userID' element={<Profile />}/>
           <Route path='/register' element={<RegisterPage/>} />
+          <Route path='/register/venue' element={<RegisterVenue />} />
           <Route path='/product' element={<Product />} />
           <Route path='/venue/:Venueid' element={<Venue />} />
         </Route>
