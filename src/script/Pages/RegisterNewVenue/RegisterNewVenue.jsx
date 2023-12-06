@@ -4,7 +4,7 @@ function RegisterNewVenue () {
 
     console.log('click')
     return (
-        <main>
+        <main className="container mt-3 mb-3">
             <RegisterVenueForm />
         </main>
     )

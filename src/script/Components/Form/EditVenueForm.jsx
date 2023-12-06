@@ -223,9 +223,9 @@ function ExitVenueForm ({ID, Item}) {
                     </div>
                     <div className={changeImg ? '' : 'd-none'}>
                         <label htmlFor="media" className="form-label">Image</label>
-                        <Controller
+                       <Controller
                         name="media"
-                        control={control}
+                        control={control} 
                         defaultValue=""
                         render={({ field }) => (
                             <>
