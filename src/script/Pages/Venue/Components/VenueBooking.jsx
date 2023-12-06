@@ -56,7 +56,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
       }
 
       try {
-        const fetching = await fetch('https://api.noroff.dev//api/v1/holidaze/bookings',{
+        const fetching = await fetch('https://api.noroff.dev/api/v1/holidaze/bookings',{
           method: 'POST',
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -65,14 +65,15 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
           body:JSON.stringify(object)
         })
         const receiveData = await fetching.json()
+        console.log(receiveData)
         if(fetching.status === 200) {
           setOrderComplett(true)
         }
         if(fetching.status > 400 && fetching.status < 499){
           const {message:msg} = receiveData.errors[0]
           setError('apiError', {message: msg})
-          
-      }
+        
+        }
 
       } catch (error) {
         console.log(error)

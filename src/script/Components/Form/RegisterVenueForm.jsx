@@ -117,6 +117,7 @@ function RegisterVenueForm () {
                 body:JSON.stringify(obj)
             })
             const receiveData = await fetching.json()
+            console.log(fetching)
             if(fetching.status === 200){
                 navigate(`/venue/${receiveData.id}`)
             }

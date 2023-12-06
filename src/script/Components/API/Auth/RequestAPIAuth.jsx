@@ -13,7 +13,7 @@ function RequestAPIAuth (UserName,Token){
                 setIsLoading(true);
                 setIsError(false)
 
-                const fetchedData = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${UserName}`,{
+                const fetchedData = await fetch(`https://api.noroff.dev/api/v1/holidaze/profiles/${UserName}?_bookings=true&_venues=true`,{
                     method: 'GET',
                     headers:{
                         Authorization: `Bearer ${Token}`,
@@ -21,7 +21,10 @@ function RequestAPIAuth (UserName,Token){
                     }
                 })
                 const responseData = await fetchedData.json()
-                console.log(responseData)
+                console.log(fetchedData)
+                if(fetchedData.status === 200) {
+                    setData(responseData)
+                }
 
             } catch (error) {
                 console.log(error)
