@@ -65,9 +65,8 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
           body:JSON.stringify(object)
         })
         const receiveData = await fetching.json()
-        console.log(receiveData)
-        if(fetching.status === 200) {
-          setOrderComplett(true)
+        if(fetching.status === 201) {
+          setError('apiSussec', {message: 'Your booking are complett'})
         }
         if(fetching.status > 400 && fetching.status < 499){
           const {message:msg} = receiveData.errors[0]
@@ -116,7 +115,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
         </div>
       )
     }
-    else {
+    if(!orderComplett) {
       return (
         <div className="d-flex flex-column align-items-center mt-3 mb-3">
           <form>
@@ -150,6 +149,7 @@ function VenueBooking ({Bookings, VenueID, MaxGuest, Price}) {
               </div>
             </div>
           </div>
+          <p className="text-success">{errors.apiSussec?.message}</p>
           <p className="text-warning">{errors.apiError?.message}</p>
           <button type="button" className="btn btn-primary w-100" onClick={OnSumit}>Rent</button>
           </form>

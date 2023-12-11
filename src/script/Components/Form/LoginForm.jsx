@@ -73,6 +73,7 @@ function LoginForm () {
                 const {name} = receiveData
                 setUserDate(receiveData)
                 navigate(`profile/${name}`)
+                window.location.reload();
             }
             if(fetching.status > 400 && fetching.status < 499){
                 const {message:msg} = receiveData.errors[0]

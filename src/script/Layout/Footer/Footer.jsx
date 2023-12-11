@@ -15,12 +15,15 @@ function Footer () {
                         </p>
                     </div>
                     <div className='col'>
-                        <ul className='list-group'>
+                        <ul className='list-group' style={{listStyle: 'none'}}>
                             <li>
                                 <h5 style={{color: '#FFFFFF'}}>Our Company</h5>
                             </li>
                             <li>
-                                <Link  to='/' className='link-unstyled'>Home</Link>
+                                <Link  to='/' className='link-unstyled text-white'>Home</Link>
+                            </li>
+                            <li>
+                                <Link  to='/' className='link-unstyled text-white'>Rent</Link>
                             </li>
                         </ul>
                     </div>

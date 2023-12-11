@@ -32,7 +32,7 @@ function Dashboard() {
                             Confirmation
                         </h3>
                         <p style={{color: 'white'}}>
-                            Once you've submitted your venue details, our team will review the information to ensure accuracy and completeness. You'll receive a confirmation once your venue is approved and live on our platform.
+                            Once you ve submitted your venue details, our team will review the information to ensure accuracy and completeness. You'll receive a confirmation once your venue is approved and live on our platform.
                         </p>
                         <Link to='/dashboard/register/venue' className='btn btn-primary'>Register Venue</Link>
                         </div>

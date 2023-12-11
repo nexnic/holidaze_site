@@ -21,7 +21,8 @@ function RegisterVenue () {
                         <p>Streamlined Booking: Receive booking requests directly through our platform</p>
                         <p>Networking Opportunities: Connect with event organizers seeking unique spaces</p>
                         <p>Ready to get started?</p>
-                        <button className="btn btn-primary" onClick={() => setModalShow(true)}>
+                        <label htmlFor="venueButton"></label>
+                        <button className="btn btn-primary" id="venueButton" onClick={() => setModalShow(true)}>
                             Become Venue Owner
                         </button>
                     </div>

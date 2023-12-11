@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useNavigate } from "react-router-dom";
-
+import defaultImage from '../../../assets/Image/No_image_available.svg.png'
 
 
 function VenueCard({ item }) {
@@ -15,8 +15,8 @@ function VenueCard({ item }) {
     }
 
    return (
-    <div className="card card__venue bg-dark text-white" id={item.id} onClick={() => HandlerVenueCard(id)}>
-        <img src={item.media[0]} alt="" className="card-img"/>
+    <div className="card card__venue bg-dark text-white" id={item.id} onClick={() => HandlerVenueCard(id)} style={{zIndex: 100}}>
+        <img src={item.media[0] ? item.media[0] : defaultImage } alt="" className="card-img"/>
         <div className="position-absolute bottom-0 text-light w-100 p-3" style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
             <h5 className="card-title">{item.name}</h5>
             <div>
