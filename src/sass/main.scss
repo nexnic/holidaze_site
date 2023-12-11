@@ -14,3 +14,27 @@
 
 // Import Bootstrap 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+$mynewcolor: #2793F2;
+
+.btn-primary {
+    color: white;
+    @include button-variant($mynewcolor, darken($mynewcolor, 7.5%), darken($mynewcolor, 10%), lighten($mynewcolor,5%), lighten($mynewcolor, 10%), darken($mynewcolor,30%));
+}
+
+.link-primary-custom {
+    color: $mynewcolor;
+}
+
+.custom-control-input {
+    background-color: white;
+    &:focus {
+        color:white;
+    }
+}
+.form-control {
+    background-color: white;
+    &:focus {
+        color:white;
+    }
+}

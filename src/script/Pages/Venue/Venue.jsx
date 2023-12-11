@@ -5,9 +5,10 @@ import ErrorMSG from "../../Components/Error/ErrorMSG"
 import { Children, useState } from "react"
 import VenueBooking from "./Components/VenueBooking"
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Modaltest from "./Components/VenueTest"
 import ModelBox from "../../Components/Reuse/ModelBox"
+import GetLocal from "../../Storage/GetLocal"
+
+import DefaultImage from '../../../assets/Image/No_image_available.svg.png'
 
 const options = {
     year: "numeric",
@@ -17,6 +18,7 @@ const options = {
 
 function Venue () {
     const {Venueid} = useParams()
+    const userLogin = GetLocal('userData') 
     const {data, isLoading, isError} = Request('venues' , Venueid, '_bookings=true')
     const {media, id,  updated, name, rating, description, price, bookings, maxGuests} = data
     const [selectImage, setSelectImage] = useState(0);
@@ -24,6 +26,7 @@ function Venue () {
     const dateNow = new Date(updated).toLocaleDateString('no-NO', options)
     const maxRating = 5;
     const activeRating = rating
+    
 
     const handleClose = () => setModalShow(false);
 
@@ -35,16 +38,11 @@ function Venue () {
             <main>
                 <div className='container mb-3'>
                     <div className='carousel slide'>
-                        <ol className="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
                         <div className="carousel-inner">
                             {
                                 media?.map((items, k) => (
                                     <div className={`carousel-item ${selectImage === k ? 'active': ''}`} key={k} >
-                                        <img src={items} key={k} alt='Image of the place' className="d-block w-100"/>
+                                        <img src={items ? items : DefaultImage} key={k} alt='Image of the place' className="d-block h-50"/>
                                     </div>
                                 ))
                             }
@@ -74,9 +72,12 @@ function Venue () {
                             <div>
                                 <small>Per Day</small>
                                 <h3>{price} kr</h3>
-                                <Button variant="primary" onClick={() => setModalShow(true)}>
-                                    Rent
-                                </Button>
+                                { userLogin ? 
+                                    <Button variant="primary" onClick={() => setModalShow(true)}>
+                                        Rent
+                                    </Button>
+                                    : null
+                                }
 
                                 <ModelBox
                                     IsActive={modalShow}
