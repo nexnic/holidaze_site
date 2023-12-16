@@ -1,6 +1,10 @@
-# React + Vite
+# Holidaze 
+![image](./Live-Version.png)
 
 ## Description
+
+Holidaze is an innovative accommodation booking platform that allows users to discover and book their ideal holiday rental. This project involves creating a robust front-end for the Holidaze application, focusing on both the customer-facing side for booking holidays and the admin-facing side for venue management.
+
 
 ## Built With
 
@@ -22,24 +26,34 @@ Here, you can find tech waste used to build this site.
 
 ## Getting Started
 
-## Installing
+### Installing
 requirement
--nodejs
+- [nodejs](https://nodejs.org/en)
 
 First thing you need is Clone the Repo
 
-git clone git@github.com:nexnic/YourStore.git 
-Getting started
-You can change the code, then need to install node-modules before changing some thing
+ ```
+   git clone git@github.com:nexnic/YourStore.git 
+```
 
-npm run update
-Run Local
+Let install dependency
 
-Run this on your local network.
+```
+npm run install
+```
 
-npm run dev   
-Sass
+### Run
 
-When changing something inside the sass, You need to run the compiler for sass.
+Let run this local 
+```
+npm run dev
+```
+This will now run local network can be access from device 
 
-npm run sass
+# Contact
+
+This is where you can leave your social links for people to contact you, such as a LinkedIn profile or Twitter link e.g.
+
+```
+ToDo
+```
